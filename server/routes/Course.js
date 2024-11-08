@@ -22,7 +22,7 @@ const {
 const {
   showAllCategories,
   createCategory,
-  categoryPageDetails,
+  getCategoryPageDetails,
   addCourseToCategory,
 } = require("../controllers/Category")
 
@@ -97,7 +97,7 @@ router.post("/updateCourseProgress", auth, isStudent, markLectureAsComplete);
 // TODO: Put IsAdmin Middleware here
 router.post("/createCategory", auth, isAdmin, createCategory)
 router.get("/showAllCategories", showAllCategories)
-router.post("/getCategoryPageDetails", categoryPageDetails)
+router.get("/getCategoryPageDetails", getCategoryPageDetails)
 router.post("/addCourseToCategory", auth, isInstructor, addCourseToCategory);
 
 // ********************************************************************************************************

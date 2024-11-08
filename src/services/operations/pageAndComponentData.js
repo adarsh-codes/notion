@@ -7,7 +7,7 @@ export const getCatalogaPageData = async(categoryId,dispatch) => {
   dispatch(setProgress(50));
   let result = [];
   try{
-        const response = await apiConnector("POST", catalogData.CATALOGPAGEDATA_API, 
+        const response = await apiConnector("GET", catalogData.CATALOGPAGEDATA_API, 
         {categoryId: categoryId,});
         console.log("CATALOG PAGE DATA API RESPONSE....", response);
         if(!response.data.success)

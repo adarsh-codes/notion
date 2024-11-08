@@ -17,7 +17,7 @@ const { cloudnairyconnect } = require("./config/cloudinary");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 database.connect();
 
 app.use(express.json());
