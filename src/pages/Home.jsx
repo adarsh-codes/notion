@@ -16,25 +16,26 @@ import CourseSlider from '../Components/core/Catalog/CourseSlider';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import RatingSlider from '../Components/core/Ratings/RatingSlider';
+import { catalogData } from '../services/apis';
 
 
 function Home() {
+    const dispatch = useDispatch();
     const [CatalogPageData, setCatalogPageData] = useState(null);
-    const categoryID = "658add72f2eae9a0c660adf9";
+    const categoryName = "Data Science";
 
     useEffect(() => {
         const fetchCatalogPageData = async () => {
             
-                const result = await getCatalogaPageData(categoryID,dispatch);
+                const result = await getCatalogaPageData(categoryName,dispatch);
                 setCatalogPageData(result);
                 console.log("page data",CatalogPageData);
-            
         }
-        if (categoryID) {
+        if (categoryName) {
             fetchCatalogPageData();
         }
-    }, [categoryID])
-    const dispatch = useDispatch();
+    }, [categoryName])
+    
   return (
     <div>
         <div className=' mx-auto relative flex flex-col w-11/12 items-center justify-between text-white '>

@@ -62,10 +62,10 @@ exports.showAllCategories = async (req, res) => {
 
 exports.getCategoryPageDetails = async (req, res) => {
 	try {
-		const { categoryId } = req.body;
+		const { categoryName } = req.body;
 
 		// Get courses for the specified category
-		const selectedCategory = await Category.findById(categoryId)          // populate instuctor and rating and reviews from courses
+		const selectedCategory = await Category.findOne({categoryName})          // populate instuctor and rating and reviews from courses
 			.populate({ path: "courses", match: { status: "Published" }, populate: ([{ path: "instructor" }, { path: "ratingAndReviews" }]) })
 			.exec();
 		// console.log(selectedCategory);
@@ -88,15 +88,18 @@ exports.getCategoryPageDetails = async (req, res) => {
 		}
 
 		const selectedCourses = selectedCategory.courses;
+		// TODO: Handle the case
 
 		// Get courses for other categories
 		const categoriesExceptSelected = await Category.find({
-			_id: { $ne: categoryId },
-		}).populate({ path: "courses", match: { status: "Published" }, populate: ([{ path: "instructor" }, { path: "ratingAndReviews" }]) });
+			name: { $ne: categoryName },
+		}).populate({ path: "courses", match: { status: "Published" }, populate: [{ path: "instructor" }, { path: "ratingAndReviews" }] });
 		let differentCourses = [];
 		for (const category of categoriesExceptSelected) {
-			differentCourses.push(...category.courses);
+			if (Array.isArray(category.courses) && category.courses.length > 0)
+				differentCourses.push(...category.courses);
 		}
+		// console.log(categoriesExceptSelected)
 
 		// Get top-selling courses across all categories
 		const allCategories = await Category.find().populate({ path: "courses", match: { status: "Published" }, populate: ([{ path: "instructor" }, { path: "ratingAndReviews" }]) });

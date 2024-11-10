@@ -8,15 +8,15 @@ const CourseCard = ({cardData,currentCard,setCurrentCard}) => {
 
 <div className=' flex flex-col text-center p-2 border-b-2 border-richblack-100 border-dashed'>
   <p className={` text-xl font-bold text-left mb-2 ${currentCard===cardData.heading?"text-black":"text-richblue-5 "}`}>
-    {cardData.heading}
+    {cardData?.heading}
   </p>
   <p className=" text-left mb-6 text-base ">
-    {cardData.description}
+    {cardData?.description}
   </p>
 </div>
 <div className=' flex justify-between w-full p-3'>
-  <p>{cardData.level}</p>
-  <p>{cardData.lessionNumber} Lessons</p>
+  <p>{cardData?.level}</p>
+  <p>{cardData?.lessionNumber} Lessons</p>
   </div>
 </button>
     </div>

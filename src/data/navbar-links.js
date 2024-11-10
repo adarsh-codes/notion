@@ -4,10 +4,6 @@ export const NavbarLinks = [
     path: "/",
   },
   {
-    title: "Roadmaps",
-    path : "https://linktr.ee/hiten.codes?utm_source=linktree_profile_share"
-  },
-  {
     title: "Catalog",
     // path: '/catalog',
   },

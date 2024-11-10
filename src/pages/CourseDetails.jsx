@@ -41,7 +41,7 @@ const CourseDetails = () => {
     useEffect(() => {
         const getCourseDetails = async() => {
             const response = await fetchCourseDetails(courseId,dispatch);
-            // console.log("getCourseDetails -> response", response);
+            console.log("getCourseDetails -> response", response);
             setCourseDetail(response);
         }
         getCourseDetails();
@@ -105,8 +105,9 @@ const CourseDetails = () => {
                         <span className='text-richblack-200'>{courseDetail?.studentsEnrolled?.length} students enrolled</span>
                     </div>
                     <div>
-                        <p>Created By {courseDetail?.instructor?.firstName}  {courseDetail?.instructor?.lastName}</p>
-                    </div>
+                    {courseDetail?.instructor && (
+    <p>Created By {courseDetail.instructor.firstName} {courseDetail.instructor.lastName}</p>
+)}                    </div>
                     <div className='flex flex-wrap gap-5 text-lg'>
                         <AiOutlineInfoCircle className='text-2xl text-richblack-5' />
                         <p className='text-richblack-50'>Created at &nbsp;    
@@ -170,7 +171,7 @@ const CourseDetails = () => {
                                 <p className='my-2 text-xl font-semibold '>This course includes</p>
                                 <div className='flex flex-col gap-1 text-sm text-caribbeangreen-100'>
                                     {
-                                        JSON.parse(courseDetail?.instructions).map((item,index) => (
+                                        (courseDetail?.instructions || []).map((item,index) => (
                                             <div key={index} className='flex gap-2 items-center'>
                                                 <span className='text-lg'>✓</span>
                                                 <span>{item}</span>
@@ -258,7 +259,7 @@ const CourseDetails = () => {
                     Author
                 </p>
                 <div className='flex items-center gap-4 py-4'>
-                    <img src={courseDetail?.instructor.image} alt="author img" className='w-[50px] h-[50px] rounded-full object-cover'/>
+                    <img src={courseDetail?.instructor?.image} alt="author img" className='w-[50px] h-[50px] rounded-full object-cover'/>
                     <p className='text-xl font-semibold'>{courseDetail?.instructor?.firstName} {courseDetail?.instructor?.lastName}</p>
                 </div>
                 <p className='text-richblack-50 text-sm mb-10'>{courseDetail?.instructor?.additionalDetails?.about}</p>

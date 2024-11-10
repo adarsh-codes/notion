@@ -8,7 +8,7 @@ const Course_Card = ({course, Height}) => {
     const [avgReviewCount, setAvgReviewCount] = useState(0);
 
     useEffect(()=> {
-        const count = GetAvgRating(course.ratingAndReviews);
+        const count = GetAvgRating(course?.ratingAndReviews);
         setAvgReviewCount(count);
     },[course])
 
@@ -16,7 +16,7 @@ const Course_Card = ({course, Height}) => {
     
   return (
     <div className=' mb-4 hover:scale-[1.03] transition-all duration-200 z-50 '>
-        <Link to={`/courses/${course._id}`}>
+        <Link to={`/courses/${course?.name}`}>
             <div>
                 <div>
                     <img 
