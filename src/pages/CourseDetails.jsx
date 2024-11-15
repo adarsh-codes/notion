@@ -41,11 +41,10 @@ const CourseDetails = () => {
     useEffect(() => {
         const getCourseDetails = async() => {
             const response = await fetchCourseDetails(courseId,dispatch);
-            console.log("getCourseDetails -> response", response);
             setCourseDetail(response);
         }
         getCourseDetails();
-    }, [courseId]);
+    }, [courseId,dispatch]);
 
     useEffect(() => {
         if(courseDetail?.ratingAndReviews?.length > 0){

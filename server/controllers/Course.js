@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Course = require("../models/Course");
 const Category = require("../models/Category");
 const User = require("../models/User");
@@ -161,43 +162,70 @@ exports.getAllCourses = async (req, res) => {
 
 
 
-exports.getCourseDetails = async (req,res)=>{
+exports.getCourseDetails = async (req, res) => {
 	try {
-		const {courseId}=req.body;
-	const courseDetails=await Course.find({_id: courseId}).populate({path:"instructor",
-	populate:{path:"additionalDetails"}})
-	.populate("category")
-	.populate({                    //only populate user name and image
-		path:"ratingAndReviews",
-		populate:{path:"user"
-		,select:"firstName lastName accountType image"}
-	})
-	.populate({path:"courseContent",populate:{path:"subSection"}})
-	.exec();
-
-	if(!courseDetails){
-		return res.status(404).json({
-            success:false,
-            message:"Course Not Found"
-        })
-	}
-	return res.status(200).json({
-        success:true,
-		message:"Course fetched successfully now",
-        data:courseDetails
-    });
-		
+	  const { courseId } = req.body;
+	  console.log("Request Body:", req.body);
+  
+	  if (!courseId) {
+		return res.status(400).json({
+		  success: false,
+		  message: "courseId is required",
+		});
+	  }
+  
+	  const courseDetails = await Course.findOne({ _id: courseId })
+		.populate({
+		  path: "instructor",
+		  populate: { path: "additionalDetails" },
+		})
+		.populate("category")
+		.populate("ratingAndReviews")
+		.populate({
+		  path: "courseContent",
+		  populate: {
+			path: "subSection",
+			select: "-videoUrl",
+		  },
+		})
+		.exec();
+  
+	  if (!courseDetails) {
+		return res.status(400).json({
+		  success: false,
+		  message: `Could not find course with id: ${courseId}`,
+		});
+	  }
+  
+	  console.log("Course Details Retrieved:", courseDetails);
+  
+	  let totalDurationInSeconds = 0;
+	  courseDetails.courseContent.forEach((content) => {
+		content.subSection.forEach((subSection) => {
+		  const timeDurationInSeconds = parseInt(subSection.timeDuration) || 0;
+		  totalDurationInSeconds += timeDurationInSeconds;
+		});
+	  });
+  
+	  const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
+  
+	  return res.status(200).json({
+		success: true,
+		data: {
+		  courseDetails,
+		  totalDuration,
+		},
+	  });
 	} catch (error) {
-		console.log(error);
-        return res.status(404).json({
-            success:false,
-			message:`Can't Fetch Course Data`,
-			error:error.message
-        })
-		
+	  console.error("Error in getCourseDetails:", error);
+	  return res.status(500).json({
+		success: false,
+		message: error.message,
+	  });
 	}
-
-}
+  };
+  
+  
 
 
 

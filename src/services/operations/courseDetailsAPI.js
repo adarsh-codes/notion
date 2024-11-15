@@ -46,29 +46,29 @@ export const getAllCourses = async () => {
 };
 
 export const fetchCourseDetails = async (courseId, dispatch) => {
-  // const toastId = toast.loading("Loading...")
   dispatch(setProgress(50));
+  console.log("Fetching course details for ID:", courseId);
+
   let result = null;
   try {
-    const response = await apiConnector("POST", COURSE_DETAILS_API, {
-      courseId,
-    });
-    console.log("COURSE_DETAILS_API API RESPONSE............", response.data);
+    const response = await apiConnector("POST", COURSE_DETAILS_API, { courseId });
+    console.log("Full API Response:", response);
 
-    if (!response.data.success) {
-      throw new Error(response.data.message);
+    if (!response?.data?.success) {
+      throw new Error(response?.data?.message || "API Error");
     }
-    result = response.data.data[0];
+
+    result = response?.data?.data.courseDetails;
   } catch (error) {
-    console.log("COURSE_DETAILS_API API ERROR............", error);
-    result = error.response.data;
-    toast.error(error.response.data.message);
+    console.error("Error in COURSE_DETAILS_API:", error);
+    toast.error(error?.response?.data?.message || "Something went wrong.");
+  } finally {
+    dispatch(setProgress(100));
   }
-  // toast.dismiss(toastId)
-  dispatch(setProgress(100));
-  //   dispatch(setLoading(false));
+
   return result;
 };
+
 
 // fetching the available course categories
 export const fetchCourseCategories = async () => {
