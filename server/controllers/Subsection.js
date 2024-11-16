@@ -9,10 +9,10 @@ exports.createSubSection = async (req, res) => {
 	try {
 		// Extract necessary information from the request body
 		const { sectionId, title , description,courseId } = req.body;
-		const video = req.files.videoFile;
+		const pdf = req.files.pdfFile;
 
 		// Check if all necessary fields are provided
-		if (!sectionId || !title || !description || !video || !courseId ) {
+		if (!sectionId || !title || !description || !pdf || !courseId ) {
 			return res
 				.status(404)
 				.json({ success: false, message: "All Fields are Required" });
@@ -28,7 +28,7 @@ exports.createSubSection = async (req, res) => {
 
 		// Upload the video file to Cloudinary
 		const uploadDetails = await uploadImageToCloudinary(
-			video,
+			pdf,
 			process.env.FOLDER_VIDEO
 		);
 
@@ -69,7 +69,7 @@ exports.updateSubSection = async (req,res) => {
 	try {
 		// Extract necessary information from the request body
 		const { SubsectionId, title , description,courseId } = req.body;
-		const video = req?.files?.videoFile;
+		const video = req?.files?.pdfFile;
 
 		
 		let uploadDetails = null;

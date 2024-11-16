@@ -399,8 +399,12 @@ export const createRating = async (data, token) => {
 //add course to Category
 export const addCourseToCategory = async (data, token) => {
   const toastId = toast.loading("Loading...");
-  let success = false;
   try {
+    // Validate required fields
+    if (!data.categoryId || !data.courseId) {
+      throw new Error("Both categoryId and courseId are required.");
+    }
+
     const response = await apiConnector(
       "POST",
       ADD_COURSE_TO_CATEGORY_API,
@@ -409,20 +413,28 @@ export const addCourseToCategory = async (data, token) => {
         Authorization: `Bearer ${token}`,
       }
     );
-    console.log("ADD COURSE TO CATEGORY API RESPONSE............", response);
+
+    console.log("ADD COURSE TO CATEGORY API RESPONSE:", response);
+
     if (!response?.data?.success) {
-      throw new Error("Could Not Add Course To Category");
+      throw new Error(response?.data?.message || "Could Not Add Course To Category");
     }
+
     toast.success("Course Added To Category");
-    success = true;
+    return true;
   } catch (error) {
-    success = false;
-    console.log("ADD COURSE TO CATEGORY API ERROR............", error);
-    toast.error(error.message);
+    console.error("ADD COURSE TO CATEGORY API ERROR:", error);
+
+    const errorMessage =
+      error?.response?.data?.message || error.message || "Something went wrong";
+    toast.error(errorMessage);
+
+    return false;
+  } finally {
+    toast.dismiss(toastId);
   }
-  toast.dismiss(toastId);
-  return success;
 };
+
 
 //search courses
 export const searchCourses = async (searchQuery, dispatch) => {
