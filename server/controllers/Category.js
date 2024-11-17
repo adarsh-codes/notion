@@ -135,6 +135,7 @@ exports.addCourseToCategory = async (req, res) => {
 		// validation
 		const category = await Category.findById(categoryId);
 		if (!category) {
+			console.log("category not found");
 			return res.status(404).json({
 				success: false,
 				message: "Category not found",

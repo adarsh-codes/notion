@@ -17,6 +17,7 @@ const PublishCourse = () => {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const formData = new FormData();
 
     useEffect(() => {
         if(course?.status=== COURSE_STATUS.PUBLISHED) {
