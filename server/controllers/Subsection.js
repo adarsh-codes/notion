@@ -69,14 +69,14 @@ exports.updateSubSection = async (req,res) => {
 	try {
 		// Extract necessary information from the request body
 		const { SubsectionId, title , description,courseId } = req.body;
-		const video = req?.files?.pdfFile;
+		const pdfFile = req?.files?.pdfFile;
 
 		
 		let uploadDetails = null;
 		// Upload the video file to Cloudinary
-		if(video){
+		if(pdfFile){
 		 uploadDetails = await uploadImageToCloudinary(
-			video,
+			pdfFile,
 			process.env.FOLDER_VIDEO
 		);
 		}

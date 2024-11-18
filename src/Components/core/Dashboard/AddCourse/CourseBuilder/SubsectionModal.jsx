@@ -32,7 +32,7 @@ const SubsectionModal = ({
     if (view || edit) {
       setValue("lecture", modalData.title);
       setValue("lectureDesc", modalData.description);
-      setValue("lecturePDF", modalData.pdfUrl);
+      setValue("lecturePDF", modalData.videoUrl);
     }
   }, [view, edit, modalData, setValue]);
 
@@ -41,7 +41,7 @@ const SubsectionModal = ({
     return (
       currentValues.lecture !== modalData.title ||
       currentValues.lectureDesc !== modalData.description ||
-      currentValues.lecturePDF !== modalData.pdfUrl
+      currentValues.lecturePDF !== modalData.videoUrl
     );
   };
 
