@@ -66,7 +66,6 @@ const EnrolledCourses = () => {
                                 <div className='flex rounded-t-lg bg-richblack-500 '>
                                     <p className='w-[45%] px-5 py-3'>Course Name</p>
                                     <p className='w-1/4 px-2 py-3'></p>
-                                    <p className='flex-1 px-2 py-3'>Progress</p>
                                 </div>
 
                                 {/* Cards shure hote h ab */}
@@ -88,33 +87,10 @@ const EnrolledCourses = () => {
                                                 </div>
                                             </div>
 
-                                            <div className='w-1/4 px-2 py-3'>
-                                                {course?.totalDuration}
-                                            </div>
+                                          
                                             
                                             {/* progress bar kaa code */}
-                                            <div className='flex w-1/5 flex-col gap-2 px- py-3'>
-                                                {
-                                                    progressData?.map((progress, index) => {
-                                                        //show 0 progress if no progress data is available
-                                                        if (progress?.courseID === course?._id) {
-                                                            return (
-                                                                <div key={index}>
-                                                                    <p>Completed: {progress?.completedVideos?.length} / {totalNoOfLectures(course)}</p>
-                                                                    <ProgressBar
-                                                                        completed={progress?.completedVideos?.length / totalNoOfLectures(course) * 100}
-                                                                        total={progress?.total}
-                                                                        height='8px'
-                                                                        isLabelVisible={false}
-                                                                    />
-                                                                </div>
-                                                            )
-                                                        }
-                                                        return null;
-                                                    }
-                                                    )
-                                                }
-                                            </div>
+                                           
                                         </div>
                                     ))
                                 }

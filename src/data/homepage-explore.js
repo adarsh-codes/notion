@@ -1,117 +1,106 @@
 export const HomePageExplore = [
     {
-        tag: 'Free',
-        courses : [
+        tag: 'Computer Science & IT',
+        courses: [
             {
-                heading : "Learn HTML",
-                description : "This course covers the basic concepts of HTML including creating and structuring web pages, adding text, links, images, and more.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "Learn HTML & CSS",
+                description: "Start with the basics of web development by learning HTML to structure pages and CSS to style them beautifully.",
+                level: 'Beginner',
+                lessionNumber: 6,
+                 lnk : "https://www.w3schools.com/html"
             },
             {
-                heading : "Learn CSS",
-                description : "This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques and various other features.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "React for Beginners",
+                description: "Dive into React to learn components, state, props, and build modern, dynamic web applications.",
+                level: 'Beginner to Intermediate',
+                lessionNumber: 8,
+                 lnk : "https://www.w3schools.com/react/default.asp"
             },
             {
-                heading : "Responsive Web design",
-                description : "This course teaches responsive web design techniques, allowing web pages to adapt to different devices and screen sizes",
-                level : 'Beginner',
-                lessionNumber : 6
-            },
-        ]
-    },
-    {
-        tag: 'New to coding',
-        courses : [
-            {
-                heading : "JavaScript Basics",
-                description : " Learn the fundamentals of JavaScript programming, including variables, data types, functions, control structures, and DOM manipulation.",
-                level : 'Beginner',
-                lessionNumber : 6
-            },
-            {
-                heading : "Python for Beginners",
-                description : "Dive into the world of Python programming, covering syntax, data structures, control flow, functions, and file handling.",
-                level : 'Beginner',
-                lessionNumber : 6
-            },
-            {
-                heading : "Introduction to SQL",
-                description : "Learn the fundamentals of SQL, including database structures, how to write SQL queries, and how to navigate the PostgreSQL database server.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "Introduction to Cybersecurity",
+                description: "Understand the fundamentals of cybersecurity, including threat detection and system protection.",
+                level: 'Intermediate',
+                lessionNumber: 7,
+                 lnk : "https://www.w3schools.com/cybersecurity/"
             },
         ]
     },
     {
-        tag: 'Most popular',
-        courses : [
+        tag: 'Mechanical Engineering',
+        courses: [
             {
-                heading : "Mobile App Development",
-                description : "Explore the fundamentals of mobile app development, covering UI design, navigation, data storage, and deployment for iOS and Android platforms.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "Strength of Materials",
+                description: "Master the concepts of stress, strain, and material behavior under loads, essential for structural and mechanical engineering.",
+                level: 'Intermediate',
+                lessionNumber: 10,
+                lnk : "https://www.geeksforgeeks.org/mechanical-properties-of-engineering-materials/"
             },
             {
-                heading : "Web Development with React",
-                description : "Learn the fundamentals of React, including JSX, the Virtual DOM, props, state, event handling, and working with data and APIs.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "Thermodynamics Essentials",
+                description: "Learn the principles of thermodynamics, heat transfer, and energy systems crucial for mechanical and thermal engineering.",
+                level: 'Intermediate',
+                lessionNumber: 8,
+                lnk : "https://www.sfu.ca/~mbahrami/ENSC%20388/Notes/Intro%20and%20Basic%20Concepts.pdf"
             },
             {
-                heading : "Cybersecurity Essentials",
-                description : "Learn the fundamentals of cybersecurity, including how to detect threats, protect systems and networks, and anticipate potential cyber attacks.",
-                level : 'Beginner',
-                lessionNumber : 6
-            },
-        ]
-    },
-    {
-        tag: 'Skills paths',
-        courses : [
-            {
-                heading : "Flask",
-                description : "Discover the fundamentals of web development with Flask, a Python-based microframework. Learn to build dynamic web applications, handle routes, manage templates, and interact with databases.",
-                level : 'Beginner',
-                lessionNumber : 6
-            },
-            {
-                heading : "Django",
-                description : "Learn the fundamentals of web development with Django 2 by building a portfolio website with HTML, CSS, Python, and Django.",
-                level : 'Beginner',
-                lessionNumber : 6
-            },
-            {
-                heading : "Fast API",
-                description : "Learn the fundamentals of FastAPI, a Python-based framework for building web applications quickly and efficiently using modern software design principles.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "Machine Design Basics",
+                description: "Explore the fundamentals of machine design, focusing on gears, shafts, bearings, and structural integrity.",
+                level: 'Intermediate',
+                lessionNumber: 9,
+                 lnk : "https://randrmanufacturing.com/blog/types-of-machine-design-design-basics/"
             },
         ]
     },
     {
-        tag: 'Career paths',
-        courses : [
+        tag: 'IT Skills',
+        courses: [
             {
-                heading : "Next.js",
-                description : "Learn the fundamentals of Next.js, a React framework for building server-side rendered and statically generated React applications.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "Python Programming Basics",
+                description: "Learn Python programming with real-world applications in automation, data analysis, and backend development.",
+                level: 'Beginner',
+                lessionNumber: 6,
+                 lnk : "https://www.w3schools.com/python/python_intro.asp"
             },
             {
-                heading : "Graphic Design Principles",
-                description : "Learn the fundamentals of graphic design, including typography, imagery, composition, layout, and color theory in a hands-on approach using Photoshop.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "Mastering Git and GitHub",
+                description: "Learn Git version control and GitHub workflows to collaborate effectively on projects and manage codebases.",
+                level: 'Beginner',
+                lessionNumber: 5,
+                 lnk : "https://www.w3schools.com/git/"
             },
             {
-                heading : "Sanity",
-                description : "Learn the fundamentals of Sanity, a headless CMS for structured content that can be delivered through any channel.",
-                level : 'Beginner',
-                lessionNumber : 6
+                heading: "Cloud Computing Fundamentals",
+                description: "Understand cloud computing basics, including AWS, Azure, and the principles of scalable applications.",
+                level: 'Beginner to Intermediate',
+                lessionNumber: 8,
+                 lnk : "https://www.geeksforgeeks.org/cloud-computing/"
             },
         ]
     },
-]
+    {
+        tag: 'PYQ College Exams',
+        courses: [
+            {
+                heading: "PYQ: Engineering Mathematics",
+                description: "Practice previous year questions from engineering mathematics to strengthen problem-solving skills.",
+                level: 'All Levels',
+                lessionNumber: 10,
+                 lnk : "https://www.geeksforgeeks.org/engineering-mathematics-gate-questions/"
+            },
+            {
+                heading: "PYQ: Mechanical Engineering",
+                description: "Solve PYQs related to topics like thermodynamics, mechanics, and fluid dynamics for mechanical engineering exams.",
+                level: 'All Levels',
+                lessionNumber: 12,
+                 lnk : "https://www.gateacademy.co.in/py-papers/mechanical-engineering?srsltid=AfmBOorfGjks2Mq0Nnq8z6Ai8AWKFydaWRrCSJ5BIISHTDeRgIxhQa69"
+            },
+            {
+                heading: "PYQ: Computer Science",
+                description: "Master PYQs from topics like algorithms, data structures, and operating systems for competitive exams.",
+                level: 'All Levels',
+                lessionNumber: 15,
+                 lnk : "https://www.w3schools.com/html"
+            },
+        ]
+    },
+];

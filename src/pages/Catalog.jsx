@@ -19,35 +19,52 @@ const Catalog = () => {
   const dispatch = useDispatch();
 
 
-  const fetchSublinks=  async ()=>{
+  const fetchSublinks = async (selectedCategory) => {
     try {
-        const result = await apiConnector("GET",categories.CATEGORIES_API);
-        const category_id= result.data.data.filter((item)=>item.name=== Catalog.catalog)[0]._id;
-        setcategoryID(category_id);      
-        setDesc(result.data.data.filter((item)=>item.name=== Catalog.catalog)[0]);
-        // console.log("Desc",Desc);  
-        // console.log(category_id);
+        // Fetch all categories from the API
+        const result = await apiConnector("GET", categories.CATEGORIES_API);
+
+        // Find the specific category based on the selected name
+        const category = result.data.data.find(
+          (item) => item.name.toLowerCase() === selectedCategory.toLowerCase()
+        );
+        
+        if (category) {
+            setcategoryID(category._id);  // Set the selected category ID
+            setDesc(category);           // Set the description of the selected category
+        } else {
+            console.log("Category not found");
+        }
+
+        // Debugging logs
+        console.log("Selected Category:", category);
+
     } catch (error) {
-        console.log("could not fetch sublinks");
+        console.log("Could not fetch sublinks");
         console.log(error);
     }
-}
+};
+
 useEffect(() => {
-    fetchSublinks();
-}, [Catalog])
+  // Ensure the category from useParams is passed
+  if (Catalog?.catalog) {
+      fetchSublinks(Catalog.catalog);
+  }
+}, [Catalog]);
+
 
 useEffect(() => {
     const fetchCatalogPageData = async () => {
         
             const result = await getCatalogaPageData(categoryID,dispatch);
             setCatalogPageData(result);
-            // console.log("page data",CatalogPageData);
+            console.log("page data",CatalogPageData);
         
     }
     if (categoryID) {
         fetchCatalogPageData();
     }
-}, [categoryID])
+}, [categoryID]);
 
 
   return (

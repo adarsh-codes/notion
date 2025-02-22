@@ -213,7 +213,7 @@ const CourseDetails = () => {
                             <div className='flex flex-wrap justify-between gap-2'>
                                 <div className='flex gap-2'>
                                 <span>{courseDetail?.courseContent?.length} Section(s)</span>
-                                <span>{courseDetail?.courseContent?.reduce((acc, item) => acc + item?.subSection?.length, 0)} Lecture(s)</span>
+                                <span>{courseDetail?.courseContent?.reduce((acc, item) => acc + item?.subSection?.length, 0)} Material(s)</span>
                                 </div>
                                 <button className='text-yellow-25'>
                                     <span>Collapse all sections</span>
@@ -238,7 +238,7 @@ const CourseDetails = () => {
                                                 item?.subSection?.map((subItem, subIndex) => (
                                                     <div key={subIndex} className='relative overflow-hidden bg-richblack-900  p-5 border border-solid border-richblack-600'>
                                                         <div className='flex items-center gap-2'>
-                                                        <IoVideocamOutline className='txt-lg text-richblack-5'/>
+                                                        {/* <IoVideocamOutline className='txt-lg text-richblack-5'/> */}
                                                         <span className='text-lg'>{subItem?.title}</span>
                                                         </div>
                                                     </div>

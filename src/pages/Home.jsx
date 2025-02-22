@@ -22,7 +22,7 @@ import { catalogData } from '../services/apis';
 function Home() {
     const dispatch = useDispatch();
     const [CatalogPageData, setCatalogPageData] = useState(null);
-    const categoryName = "Data Science";
+    const categoryName = "6729511fb96acd662586232c";
 
     useEffect(() => {
         const fetchCatalogPageData = async () => {
@@ -48,22 +48,22 @@ function Home() {
             </Link>
 
             <div className='text-center text-3xl md:text-4xl font-semibold mt-7'>
-                Empower Your Future With <HighlightText text={"Coding Skills"}/>
+                Making Learning easier with <HighlightText text={"Roadmap Courses"}/>
             </div>
             <div className=' mt-4 w-[90%] text-left md:text-center text-sm md:text-lg font-bold text-richblack-300'>
-            With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors. 
+            Explore our catalog of useful study materials available for college students of all years 
             </div>
 
             <div className='flex flex-row gap-7 mt-8'>
                 <CTAButton active={true} linkto={"/signup"}>
                     Learn More
                 </CTAButton>
-                <CTAButton active={false} linkto={"/login"} >Book a Demo</CTAButton>
+                {/* <button onClick={alert("Click on catalog button on the homepage to explore")}  >Explore Catalog</button> */}
             </div>
 
             <div className='mx-3 my-12 shadow-blue-200 w-[70%] relative'>
               <div className='grad2 -top-10 w-[800px]'></div>
-            <video className='video'
+            <video className='video's
             muted
             loop
             autoPlay
@@ -78,8 +78,8 @@ function Home() {
                 heading={
                     <div className=' font-semibold text-2xl lg:text-4xl sm:w-full'>
                         Unlock Your
-                        <HighlightText text={"coding potential "}/>
-                        with our online courses
+                        <HighlightText text={"potential "}/>
+                        with our online roadmap courses
                     </div>
                 }
                 subheading = {
@@ -88,14 +88,14 @@ function Home() {
                 ctabtn1={
                     {
                         btnText: "Try it yourself",
-                        linkto: "/signup",
+                        linkto: "/catalog/Computer%20Science%20&%20IT",
                         active: true,
                     }
                 }
                 ctabtn2={
                     {
                         btnText: "learn more",
-                        linkto: "/login",
+                        linkto: "/about",
                         active: false,
                     }
                 }
